@@ -19,20 +19,16 @@ mongoose
 
 const users = {};
 
+
 io.on("connection", (socket) => {
   console.log("current");
   //   socket.emit("chat-message", "Hello world");
   socket.on("new-user", (userName) => {
     users[socket.id] = userName;
 
-    // add this user to database
-    const newUser = new message({
-      name: userName,
-      socketId: socket.id,
-    })
-
     socket.broadcast.emit("user-connected", userName);
   });
+
   socket.on("send-chat-message", (message) => {
     // console.log(message);
     socket.broadcast.emit("chat-message", {
