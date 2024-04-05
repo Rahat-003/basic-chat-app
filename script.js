@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 const socket = io("http://localhost:3000");
 const messageContainer = document.getElementById("message-container");
@@ -26,7 +26,6 @@ messageForm.addEventListener("submit", (e) => {
     socket.emit("send-chat-message", message);
     messageInput.value = "";
 });
-
 
 // appendMessage function here
 function appendMessage(message) {
