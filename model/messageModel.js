@@ -3,10 +3,11 @@ const mongoose = require("mongoose");
 const messageSchema = mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: false,
     },
     text: {
         type: [String],
+        required: false,
     },
     socketId: {
         type: String,
@@ -14,6 +15,9 @@ const messageSchema = mongoose.Schema({
     }
 });
 
-const message = mongoose.model("Message", messageSchema);
+const messageModel = mongoose.model("Message", messageSchema);
 
-module.exports = message;
+module.exports = {
+    messageModel,
+    messageSchema
+};
